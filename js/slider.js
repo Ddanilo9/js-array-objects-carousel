@@ -64,4 +64,44 @@ slides.forEach((element, i) => {
 	slidePar.innerHTML = element.description;
 	slideContent.appendChild(slidePar);
   });
+  //recupero le arrow delle slide e aggiungo un event listener che quando clicco cambia slide
+  let arrowNext = document.querySelector('.arrow-next');
+  let arrowPrev = document.querySelector('.arrow-prev');
   
+
+
+  	arrowNext.addEventListener(`click`, function () {
+	const slider = document.querySelectorAll('.slide');
+	console.log(slider)
+	const slideActive = slider[currentIndex];
+	slideActive.classList.remove('active');
+  
+	if (currentIndex < slider.length -1) { //in questo modo sarà infinito la selezione delle slides 
+	  currentIndex++;
+	} else {
+	  currentIndex = 0;
+	}
+  
+	const nextSlides = slider[currentIndex];
+  
+	nextSlides.classList.add('active');
+  });
+ 
+  	arrowPrev.addEventListener(`click`, function () {
+	const slider = document.querySelectorAll('.slide');
+	console.log(slider)
+	const slideActive = slider[currentIndex];
+	slideActive.classList.remove('active');
+  
+	if (currentIndex > 0) {
+	  currentIndex--;
+	} else {
+		currentIndex = slider.length - 1;
+	}
+  
+	const nextSlides = slider[currentIndex];
+  
+	nextSlides.classList.add('active');
+  });
+
+
